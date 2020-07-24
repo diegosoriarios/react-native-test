@@ -28,9 +28,15 @@ export function userFetchData() {
 
     try {
       const response = await api.get('users')    
-      console.log(response.status)
+
+      let users = response.data
+
+      users = users.map(user => {
+        user.image = `https://api.adorable.io/avatars/285/${user.name}.png`
+        return user
+      })
       
-      dispatch(userFetchDataSuccess(response.data))
+      dispatch(userFetchDataSuccess(users))
       dispatch(userHasErrored(false))
       dispatch(userIsLoading(false))
     } catch(err) {
