@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, Dimensions, TouchableOpacity } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
@@ -34,7 +34,11 @@ const Profile = ({ route, imageIsLoading, getUserImages }) => {
               data={user.albums}
               numColumns={3}
               keyExtractor={image => String(image.id)}
-              renderItem={({item}) => <Image source={{ uri: item.url }} style={{ width: '30%', aspectRatio: 1.2}} />}
+              renderItem={({item}) => (
+                <TouchableOpacity style={styles.grid}>
+                  <Image source={{ uri: item.url }} style={styles.gridImage} />
+                </TouchableOpacity>
+              )}
               onEndReached={() => getMorePhotos()}
               onEndReachedThreshold={.1}
             />
@@ -82,5 +86,15 @@ const styles = StyleSheet.create({
   list: {
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  grid: {
+    alignItems: 'center',
+    justifyContent: 'space-between', 
+  },
+  gridImage: {
+    borderRadius: 10,
+    height: 100, 
+    aspectRatio: 1.2,
+    margin: 5
   }
 })
