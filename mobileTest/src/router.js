@@ -2,7 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen, ProfileScreen, Settings } from './screens'
-import SettingsButton from './components/SettingsButton/index';
+import IconLink from './components/IconLink/index';
+import Loading from './components/Loading/index';
 
 const Stack = createStackNavigator();
 
@@ -11,10 +12,13 @@ function Router() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} options={{
-          headerLeft: () => <SettingsButton />
+          headerLeft: () => <IconLink iconName={"settings"} page="Settings" />
         }} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{
+          headerRight: () => <IconLink iconName="message" page="Chat" />
+        }} />
         <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Chat" component={Loading} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -29,6 +29,13 @@ export function userImageFetchLoading(bool) {
   }
 }
 
+export function myUserUpdate(user) {
+  return {
+    type: 'MY_USER',
+    myUser: user
+  }
+}
+
 export function userFetchData() {
   return async (dispatch) => {
     dispatch(userIsLoading(true));
@@ -56,7 +63,6 @@ export function userFetchData() {
 }
 
 export function getUserImages(userId, page) {
-  console.log(userId, page)
   return async (dispatch, getState) => {
     if (userId * 10 < page) return
     try {
@@ -66,13 +72,14 @@ export function getUserImages(userId, page) {
       const images = await api.get(`albums/${page}/photos`)
       
       let array = user.albums.concat(images.data)
-      console.log(page)
+      console.log(images.data)
 
       let album = array.filter( (ele, ind) => ind === array.findIndex( elem => elem.albumId === ele.albumId && elem.id === ele.id))
       console.log(album)
 
       user.albums = album
-
+      
+      
       dispatch(userImageFetchLoading(false))
     } catch (error) {
       dispatch(userHasErrored(true)) 

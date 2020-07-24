@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import { getUserImages } from '../../actions/usersActions';
+
+function Loading() {
+  return (
+    <ActivityIndicator size={'small'} color="#fff" />
+  )
+}
 
 const Profile = ({ route, imageIsLoading, getUserImages }) => {
   const { user } = route.params 
@@ -28,22 +34,19 @@ const Profile = ({ route, imageIsLoading, getUserImages }) => {
         <Text>{user.email.toLowerCase()}</Text>
       </View>
       <View style={styles.list}>
-        {
-          !imageIsLoading && (
-            <FlatList
-              data={user.albums}
-              numColumns={3}
-              keyExtractor={image => String(image.id)}
-              renderItem={({item}) => (
-                <TouchableOpacity style={styles.grid}>
-                  <Image source={{ uri: item.url }} style={styles.gridImage} />
-                </TouchableOpacity>
-              )}
-              onEndReached={() => getMorePhotos()}
-              onEndReachedThreshold={.1}
-            />
-          )
-        }
+        <FlatList
+          data={user.albums}
+          numColumns={3}
+          keyExtractor={image => String(image.id)}
+          ListFooterComponent={imageIsLoading && <Loading />}
+          renderItem={({item}) => (
+            <TouchableOpacity style={styles.grid}>
+              <Image source={{ uri: item.url }} style={styles.gridImage} />
+            </TouchableOpacity>
+          )}
+          onEndReached={() => getMorePhotos()}
+          onEndReachedThreshold={.3}
+        />
       </View>
     </View>
   );
@@ -85,7 +88,8 @@ const styles = StyleSheet.create({
   },
   list: {
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 50
   },
   grid: {
     alignItems: 'center',

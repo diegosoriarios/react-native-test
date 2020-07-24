@@ -4,7 +4,13 @@ const INITIAL_STATE = {
   users: [],
   isLoading: false,
   hasErrored: false,
-  imageIsLoading: false
+  imageIsLoading: false,
+  myUser: {
+    name: 'Diego Rios',
+    email: 'diegosoriarios@gmail.com',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nunc nibh, blandit nec libero vitae, lobortis consequat dolor. Duis tincidunt molestie gravida. Duis egestas augue. ',
+    avatar: 'https://api.adorable.io/avatars/285/diego.png'
+  }
 }
 
 export function usersReducer(state = INITIAL_STATE, action) {
@@ -28,6 +34,11 @@ export function usersReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         imageIsLoading: action.imageIsLoading
+      }
+    case 'MY_USER':
+      return {
+        ...state,
+        myUser: action.myUser
       }
     default:
       return state
