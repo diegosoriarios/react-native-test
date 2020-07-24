@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, FlatList, ActivityIndicator, TouchableOpacity } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
+import { FlatList, ActivityIndicator } from 'react-native';
+import { SocialIcon } from 'react-native-elements'
+import { useNavigation } from '@react-navigation/native';
 import { getUserImages } from '../../actions/usersActions';
-
-function Loading() {
-  return (
-    <ActivityIndicator size={'small'} color="#fff" />
-  )
-}
+import { List, Container, Image, Header, TextName, TextEmail, TextDescription, SocialDisplay } from './styles'
+import GridItem from '../../components/GridItem';
+import Icon from 'react-native-vector-icons/FontAwesome'
+Icon.loadFont();
 
 const Profile = ({ route, imageIsLoading, getUserImages }) => {
   const { user } = route.params 
@@ -27,28 +25,32 @@ const Profile = ({ route, imageIsLoading, getUserImages }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image source={{ uri: user.image }} style={styles.image}/>
-        <Text>{user.name}</Text>
-        <Text>{user.email.toLowerCase()}</Text>
-      </View>
-      <View style={styles.list}>
+    <Container>
+      <Header>
+        <Image source={{ uri: user.image }} />
+        <TextName>{user.name}</TextName>
+        <TextEmail>{user.email.toLowerCase()}</TextEmail>
+        <TextDescription>{user.company.catchPhrase}</TextDescription>
+      </Header>
+      <SocialDisplay>
+        {
+          user.social.map((social, i) => (
+             <SocialIcon key={i} type={social} />
+          ))
+        }
+      </SocialDisplay>
+      <List>
         <FlatList
           data={user.albums}
           numColumns={3}
           keyExtractor={image => String(image.id)}
-          ListFooterComponent={imageIsLoading && <Loading />}
-          renderItem={({item}) => (
-            <TouchableOpacity style={styles.grid}>
-              <Image source={{ uri: item.url }} style={styles.gridImage} />
-            </TouchableOpacity>
-          )}
+          ListFooterComponent={imageIsLoading && <ActivityIndicator size={'small'} color="#fff" />}
+          renderItem={({item}) => <GridItem item={item} />}
           onEndReached={() => getMorePhotos()}
           onEndReachedThreshold={.3}
         />
-      </View>
-    </View>
+      </List>
+    </Container>
   );
 }
 
@@ -65,40 +67,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-  info: {
-    justifyContent: "space-evenly",
-    paddingHorizontal: 10
-  },
-  header: {
-    paddingVertical: 50,
-    alignItems: "center",
-    justifyContent: 'center'
-  },
-  list: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 50
-  },
-  grid: {
-    alignItems: 'center',
-    justifyContent: 'space-between', 
-  },
-  gridImage: {
-    borderRadius: 10,
-    height: 100, 
-    aspectRatio: 1.2,
-    margin: 5
-  }
-})

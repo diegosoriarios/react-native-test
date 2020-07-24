@@ -1,47 +1,27 @@
 import React from 'react';
-import { Text, Image, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import { Status } from './styles';
+import { Container, Status, Image, Info, TextName } from './styles';
 
 const ListItem = ({ user }) => {
 
   const navigation = useNavigation()
-  let status = Math.random() > .5 ? 'ACTIVE' : 'OFFLINE'
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Profile', { user })}>
+    <Container onPress={() => navigation.navigate('Profile', { user })}>
       <View>
-        <Image source={{ uri: user.image }} style={styles.image}/>
+        <Image source={{ uri: user.image }}/>
       </View>
-      <View style={styles.info}>
-        <Text>{user.name}</Text>
-        <Text>Ultima vez online: 12</Text>
-      </View>
+      <Info>
+        <TextName>{user.name}</TextName>
+        <Text>Ultima vez online: {user.lastTimeActive}</Text>
+      </Info>
       <View>
-        <Status status={status}></Status>
+        <Status status={user.status}></Status>
       </View>
-    </TouchableOpacity>
+    </Container>
   )
 }
 
 export default ListItem;
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    padding: 10,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-  info: {
-    justifyContent: "space-evenly",
-    paddingHorizontal: 10
-  },
-
-})

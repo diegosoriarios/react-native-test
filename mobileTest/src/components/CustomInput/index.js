@@ -1,25 +1,18 @@
 import React from 'react';
-import { TextInput, StyleSheet } from 'react-native';
+import { TextInput } from 'react-native';
 
-const CustomInput = ({ value, placeholder, onChangeText }) => {
+import { Container } from './styles'
+
+const CustomInput = ({ value, placeholder, onChangeText, line = 1 }) => {
   return (
-    <TextInput 
-      style={styles.container}
+    <Container 
       onChangeText={text => onChangeText(text)}
       value={value}
       placeholder={placeholder}
+      multiline={true}
+      numberOfLines={line}
     />
   )
 }
 
 export default CustomInput;
-
-const styles = StyleSheet.create({
-  container: { 
-    height: 40, 
-    width: '75%',
-    backgroundColor: 'gray',
-    borderRadius: 5,
-    marginVertical: 10,
-  }
-})

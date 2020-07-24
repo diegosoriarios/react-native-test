@@ -43,6 +43,7 @@ const Settings = ({ myUser, updateCurrentUser }) => {
         placeholder="Description" 
         value={description}
         onChangeText={setDescription}
+        line={4}
       />
       <CustomButton
         text="Send"
@@ -70,5 +71,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white'
   }
 })

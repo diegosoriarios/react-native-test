@@ -1,0 +1,5 @@
+export const PRIMARY_COLOR = "#593CA1"
+export const SECONDARY_COLOR = "#EC54A5"
+export const LIGHT_COLOR = "#FBE4F3"
+export const DARK_TEXT = "#101016"
+export const LIGHT_TEXT = "#94A7B1"

@@ -17,6 +17,7 @@ const Home = ({ users, isLoading, hasErrored, fetchData }) => {
   
   return (
     <FlatList 
+      style={{ backgroundColor: 'white' }}
       data={users}
       keyExtractor={user => String(user.id)}
       renderItem={({item}) => <ListItem user={item} />}
