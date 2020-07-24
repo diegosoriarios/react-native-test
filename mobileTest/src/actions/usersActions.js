@@ -1,5 +1,5 @@
 import api from '../services/api';
-import { USERS_FETCH_DATA_SUCCESS, USERS_IS_LOADING, USER_HAS_ERRORED } from './usersTypes'
+import { USERS_FETCH_DATA_SUCCESS, USERS_IS_LOADING, USER_HAS_ERRORED, FETCH_IMAGES } from './usersTypes'
 
 export function userHasErrored(bool) {
   return {
@@ -22,6 +22,13 @@ export function userFetchDataSuccess(users) {
   };
 }
 
+export function userImageFetchLoading(bool) {
+  return {
+    type: FETCH_IMAGES,
+    imageIsLoading: bool
+  }
+}
+
 export function userFetchData() {
   return async (dispatch) => {
     dispatch(userIsLoading(true));
@@ -32,6 +39,7 @@ export function userFetchData() {
       let users = response.data
 
       users = users.map(user => {
+        user.albums = []
         user.image = `https://api.adorable.io/avatars/285/${user.name}.png`
         return user
       })
@@ -45,4 +53,29 @@ export function userFetchData() {
       return dispatch(userHasErrored(true))
     }
   };
+}
+
+export function getUserImages(userId, page) {
+  console.log(userId, page)
+  return async (dispatch, getState) => {
+    if (userId * 10 < page) return
+    try {
+      dispatch(userImageFetchLoading(true))
+      const { users } = getState().usersReducer
+      const user = users.find(usr => usr.id === userId)
+      const images = await api.get(`albums/${page}/photos`)
+      
+      let array = user.albums.concat(images.data)
+      console.log(page)
+
+      let album = array.filter( (ele, ind) => ind === array.findIndex( elem => elem.albumId === ele.albumId && elem.id === ele.id))
+      console.log(album)
+
+      user.albums = album
+
+      dispatch(userImageFetchLoading(false))
+    } catch (error) {
+      dispatch(userHasErrored(true)) 
+    }
+  }
 }
