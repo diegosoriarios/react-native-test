@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { FlatList, ActivityIndicator } from 'react-native';
+import { FlatList, ActivityIndicator, View, Text, Image } from 'react-native';
 import { SocialIcon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
 import { getUserImages } from '../../actions/usersActions';
-import { List, Container, Image, Header, TextName, TextEmail, TextDescription, SocialDisplay } from './styles'
+import styles from './styles'
 import GridItem from '../../components/GridItem';
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
@@ -25,21 +25,21 @@ const Profile = ({ route, imageIsLoading, getUserImages }) => {
   }
 
   return (
-    <Container>
-      <Header>
-        <Image source={{ uri: user.image }} />
-        <TextName>{user.name}</TextName>
-        <TextEmail>{user.email.toLowerCase()}</TextEmail>
-        <TextDescription>{user.company.catchPhrase}</TextDescription>
-      </Header>
-      <SocialDisplay>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image style={styles.image} source={{ uri: user.image }} />
+        <Text style={styles.textName}>{user.name}</Text>
+        <Text style={styles.textEmail}>{user.email.toLowerCase()}</Text>
+        <Text style={styles.textDescription}>{user.company.catchPhrase}</Text>
+      </View>
+      <View style={styles.socialDisplay}>
         {
           user.social.map((social, i) => (
              <SocialIcon key={i} type={social} />
           ))
         }
-      </SocialDisplay>
-      <List>
+      </View>
+      <View style={styles.list}>
         <FlatList
           data={user.albums}
           numColumns={3}
@@ -49,8 +49,8 @@ const Profile = ({ route, imageIsLoading, getUserImages }) => {
           onEndReached={() => getMorePhotos()}
           onEndReachedThreshold={.3}
         />
-      </List>
-    </Container>
+      </View>
+    </View>
   );
 }
 

@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { HomeScreen } from '../../src/screens'
 import renderer from 'react-test-renderer';
-import 'jest-styled-components/native'
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

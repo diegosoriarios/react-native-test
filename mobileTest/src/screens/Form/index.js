@@ -9,7 +9,7 @@ import CustomButton from '../../components/CustomButton/index';
 import { myUserUpdate } from '../../actions/usersActions';
 import { useNavigation } from '@react-navigation/native';
 
-const Settings = ({ myUser, updateCurrentUser }) => {
+const Form = ({ myUser, updateCurrentUser, buttonText = "Login" }) => {
 
   const [name, setName] = useState(myUser.name)
   const [email, setEmail] = useState(myUser.email)
@@ -46,7 +46,7 @@ const Settings = ({ myUser, updateCurrentUser }) => {
         line={4}
       />
       <CustomButton
-        text="Send"
+        text={buttonText}
         onPress={updateUser}
       />
     </View>
@@ -65,7 +65,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
 
 const styles = StyleSheet.create({
   container: {

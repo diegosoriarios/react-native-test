@@ -1,35 +1,33 @@
-import styled from 'styled-components/native'
-import { Colors } from '../../utils/status'
+import { StyleSheet } from 'react-native';
 
-export const Container = styled.TouchableOpacity`
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 10px 0;
-`
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: "center",
+    paddingVertical: 10
+  },
+  info: {
+    display: "flex",
+    alignItems: "flex-start",
+    justifyContent: "flex-end",
+    paddingHorizontal: 10,
+    width: '50%'
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+  },
+  textName: {
+    fontWeight: 'bold',
+    fontSize: 20
+  },
+  status: {
+    width: 25,
+    height: 25,
+    borderRadius: 25,
+  }
+})
 
-export const Image = styled.Image`
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-`
-
-export const Info = styled.View`
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0 10px;
-  width: 50%;
-`
-
-export const Status = styled.View`
-  width: 25px;
-  height: 25px;
-  border-radius: 25px;
-  background-color: ${props => Colors[props.status] };
-`
-
-export const TextName = styled.Text`
-  font-weight: bold;
-  font-size: 20px;
-`
+export default styles

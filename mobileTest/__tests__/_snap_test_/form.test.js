@@ -2,9 +2,8 @@ import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { Settings } from '../../src/screens'
+import { Form } from '../../src/screens'
 import renderer from 'react-test-renderer';
-import 'jest-styled-components/native'
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -24,7 +23,7 @@ test('Home Renders Correctly', () => {
 
   const tree = renderer.create(
     <Provider store={store}>
-      <Settings />
+      <Form />
     </Provider>
   ).toJSON();
   expect(tree).toMatchSnapshot();

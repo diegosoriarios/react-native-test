@@ -1,8 +1,12 @@
-import styled from 'styled-components/native'
+import { StyleSheet } from 'react-native';
 
-export const Image = styled.Image`
-  margin: 25px;
-  border-radius: 75px;
-  width: 150px;
-  height: 150px;
-`
+const styles = StyleSheet.create({
+  image: {
+    margin: 25,
+    borderRadius: 75,
+    width: 150,
+    height: 150
+  }
+})
+
+export default styles

@@ -3,30 +3,21 @@
 exports[`Profile Renders Correctly 1`] = `
 <View
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "white",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "justifyContent": "space-between",
-      },
-    ]
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "justifyContent": "space-between",
+    }
   }
 >
   <View
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "justifyContent": "center",
-          "paddingBottom": 50,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 50,
-        },
-      ]
+      Object {
+        "alignItems": "center",
+        "justifyContent": "center",
+        "paddingVertical": 50,
+      }
     }
   >
     <Image
@@ -36,50 +27,42 @@ exports[`Profile Renders Correctly 1`] = `
         }
       }
       style={
-        Array [
-          Object {
-            "borderRadius": 50,
-            "height": 100,
-            "marginBottom": 50,
-            "width": 100,
-          },
-        ]
+        Object {
+          "borderRadius": 50,
+          "height": 100,
+          "marginBottom": 50,
+          "width": 100,
+        }
       }
     />
     <Text
       style={
-        Array [
-          Object {
-            "color": "#101016",
-            "fontSize": 24,
-            "fontWeight": "bold",
-          },
-        ]
+        Object {
+          "color": "#101016",
+          "fontSize": 24,
+          "fontWeight": "bold",
+        }
       }
     >
       Leanne Graham
     </Text>
     <Text
       style={
-        Array [
-          Object {
-            "color": "#94A7B1",
-            "fontSize": 14,
-            "fontWeight": "bold",
-          },
-        ]
+        Object {
+          "color": "#94A7B1",
+          "fontSize": 14,
+          "fontWeight": "bold",
+        }
       }
     >
       sincere@april.biz
     </Text>
     <Text
       style={
-        Array [
-          Object {
-            "color": "#94A7B1",
-            "fontSize": 14,
-          },
-        ]
+        Object {
+          "color": "#94A7B1",
+          "fontSize": 14,
+        }
       }
     >
       Multi-layered client-server neural-net
@@ -87,12 +70,10 @@ exports[`Profile Renders Correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
-          "display": "flex",
-          "flexDirection": "row",
-        },
-      ]
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+      }
     }
   >
     <View
@@ -225,16 +206,14 @@ exports[`Profile Renders Correctly 1`] = `
   </View>
   <View
     style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#FBE4F3",
-          "height": "50%",
-          "justifyContent": "space-between",
-          "marginBottom": 50,
-          "width": "100%",
-        },
-      ]
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FBE4F3",
+        "height": "50%",
+        "justifyContent": "space-between",
+        "marginBottom": 50,
+        "width": "100%",
+      }
     }
   >
     <RCTScrollView

@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Grid, GridImage } from './styles';
+import { TouchableOpacity, Image } from 'react-native';
+import styles from './styles'
 
 const GridItem = ({ item }) => {
   return (
-    <Grid>
-      <GridImage source={{ uri: item.url }} />
-    </Grid>
+    <TouchableOpacity style={styles.grid}>
+      <Image style={styles.gridImage} source={{ uri: item.url }} />
+    </TouchableOpacity>
   );
 }
 

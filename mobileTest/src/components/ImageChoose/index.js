@@ -1,11 +1,11 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
-import { Image } from './styles';
+import { TouchableHighlight, Image } from 'react-native';
+import styles from './styles'
 
 const ImageChoose = ({ image, onChangeImage }) => {
   return (
     <TouchableHighlight onPress={onChangeImage}>
-      <Image source={{ uri: image }} />
+      <Image style={styles.image} source={{ uri: image }} />
     </TouchableHighlight>
   );
 }

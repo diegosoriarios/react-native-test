@@ -1,18 +1,21 @@
-import styled from 'styled-components/native'
 import { PRIMARY_COLOR, LIGHT_COLOR } from '../../utils/colors'
+import { StyleSheet } from 'react-native';
 
-export const Button = styled.TouchableHighlight`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 50px;
-  background-color: ${PRIMARY_COLOR};
-  border-radius: 50px;
-  margin-vertical: 50px;
-`
+const styles = StyleSheet.create({
+  button: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '50%',
+    height: 50,
+    backgroundColor: PRIMARY_COLOR,
+    borderRadius: 50,
+    marginVertical: 50
+  },
+  buttonText: {
+    color: LIGHT_COLOR,
+    fontWeight: 'bold'
+  }
+})
 
-export const Buttontext = styled.Text`
-  color: ${LIGHT_COLOR};
-  font-weight: bold;
-`
+export default styles
