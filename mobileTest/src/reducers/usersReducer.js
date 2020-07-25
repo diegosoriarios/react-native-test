@@ -6,9 +6,9 @@ const INITIAL_STATE = {
   hasErrored: false,
   imageIsLoading: false,
   myUser: {
-    name: 'Diego Rios',
-    email: 'diegosoriarios@gmail.com',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nunc nibh, blandit nec libero vitae, lobortis consequat dolor. Duis tincidunt molestie gravida. Duis egestas augue. ',
+    name: '',
+    email: '',
+    description: '',
     avatar: 'https://api.adorable.io/avatars/285/diego.png'
   }
 }

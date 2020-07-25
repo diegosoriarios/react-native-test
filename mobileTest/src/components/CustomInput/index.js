@@ -4,6 +4,7 @@ import { TextInput } from 'react-native';
 import styles from './styles'
 
 const CustomInput = ({ value, placeholder, onChangeText, line = 1 }) => {
+  
   return (
     <TextInput 
       style={styles.container}
@@ -11,7 +12,7 @@ const CustomInput = ({ value, placeholder, onChangeText, line = 1 }) => {
       value={value}
       placeholder={placeholder}
       multiline={true}
-      numberOfLines={line}
+      blurOnSubmit={false}
     />
   )
 }

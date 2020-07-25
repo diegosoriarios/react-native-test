@@ -1,4 +1,6 @@
 export { default as HomeScreen } from './Home'
 export { default as ProfileScreen } from './Profile'
-export { default as Form } from './Form'
+export { default as Login } from './Login'
+export { default as Settings } from './Settings'
 export { default as Error } from './Error' 
+export { default as Splashscreen} from './Splashscreen'

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen, ProfileScreen, Form, Error } from './screens'
+import { HomeScreen, ProfileScreen, Login, Settings, Error, Splashscreen } from './screens'
 import IconLink from './components/IconLink/index';
 import Loading from './components/Loading/index';
 import { navigationOptions } from './utils/navigationOptions';
@@ -12,11 +12,17 @@ function Router() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Splashscreen" component={Splashscreen} options={{
+          headerShown: false
+        }}/>
+        <Stack.Screen name="Login" component={Login} options={{
+          headerStyle: navigationOptions.noHeader,
+        }}/>
         <Stack.Screen name="Home" component={HomeScreen} options={{
           headerStyle: navigationOptions.noHeader,
-          headerLeft: () => <IconLink iconName={"settings"} page="Settings" />
+          headerLeft: () => <IconLink iconName={"settings"} page="Settings" />,
         }} />
-        <Stack.Screen name="Settings" component={Form} options={{
+        <Stack.Screen name="Settings" component={Settings} options={{
           headerStyle: navigationOptions.noHeader,
         }}/>
         <Stack.Screen name="Profile" component={ProfileScreen} options={{
