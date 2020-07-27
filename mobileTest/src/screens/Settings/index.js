@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
 import Form from '../../components/Form'
@@ -11,6 +11,10 @@ function Settings({ myUser, updateCurrentUser }) {
   const [email, setEmail] = useState(myUser.email)
   const [description, setDescription] = useState(myUser.description)
   const [avatar, setAvatar] = useState(myUser.avatar)
+
+  useEffect(() => {
+    navigation.setOptions({ title: 'Edit Profile' })
+  })
 
   const updateUser = () => {
     const userUpdated = {name, email, description, avatar}

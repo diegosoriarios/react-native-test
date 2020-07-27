@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, Keyboard } from 'react-native';
 
 import styles from './styles'
 
@@ -14,8 +14,8 @@ const CustomInput = ({ forwardRef, value, placeholder, onChangeText, line = 1, n
       placeholder={placeholder}
       multiline={true}
       numberOfLines={line}
-      blurOnSubmit={blurOnSubmit}
-      onSubmitEditing={() => nextRef ? nextRef.current.focus() : {}}
+      blurOnSubmit={true}
+      onSubmitEditing={() => nextRef ? nextRef.current.focus() : Keyboard.dismiss()}
     />
   )
 }
