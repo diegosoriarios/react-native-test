@@ -3,16 +3,19 @@ import { TextInput } from 'react-native';
 
 import styles from './styles'
 
-const CustomInput = ({ value, placeholder, onChangeText, line = 1 }) => {
-  
+const CustomInput = ({ forwardRef, value, placeholder, onChangeText, line = 1, nextRef = null, blurOnSubmit = true }) => {
+
   return (
-    <TextInput 
+    <TextInput
+      ref={forwardRef}
       style={styles.container}
       onChangeText={text => onChangeText(text)}
       value={value}
       placeholder={placeholder}
       multiline={true}
-      blurOnSubmit={false}
+      numberOfLines={line}
+      blurOnSubmit={blurOnSubmit}
+      onSubmitEditing={() => nextRef ? nextRef.current.focus() : {}}
     />
   )
 }
