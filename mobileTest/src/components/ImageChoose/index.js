@@ -1,7 +1,10 @@
 import React from 'react';
-import { TouchableHighlight, Image, Platform } from 'react-native';
+import { TouchableHighlight, Image, Platform, View } from 'react-native';
 import styles from './styles'
 import ImagePicker from 'react-native-image-picker'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import { LIGHT_TEXT, LIGHT_COLOR } from '../../utils/colors';
+Icon.loadFont();
 
 const ImageChoose = ({ image, onChangeImage }) => {
 
@@ -34,7 +37,12 @@ const ImageChoose = ({ image, onChangeImage }) => {
 
   return (
     <TouchableHighlight onPress={chooseImage}>
-      <Image style={styles.image} source={{ uri: image }} />
+      <>
+        <Image style={styles.image} source={{ uri: image }} />
+        <View style={styles.icon}>
+          <Icon name="add-a-photo" size={30} color={LIGHT_COLOR} />
+        </View>
+      </>
     </TouchableHighlight>
   );
 }
