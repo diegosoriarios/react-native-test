@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen, ProfileScreen, Login, Settings, Error, Splashscreen } from './screens'
+import { HomeScreen, ProfileScreen, Login, Settings, Splashscreen } from './screens'
 import IconLink from './components/IconLink/index';
 import Loading from './components/Loading/index';
 import { navigationOptions } from './utils/navigationOptions';
@@ -30,9 +30,6 @@ function Router() {
           headerRight: () => <IconLink iconName="message" page="Chat" />
         }} />
         <Stack.Screen name="Chat" component={Loading} options={{
-          headerStyle: navigationOptions.noHeader,
-        }} />
-        <Stack.Screen name="Error" component={Error} options={{
           headerStyle: navigationOptions.noHeader,
         }} />
       </Stack.Navigator>

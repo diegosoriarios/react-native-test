@@ -3,7 +3,7 @@ import { TextInput, Keyboard } from 'react-native';
 
 import styles from './styles'
 
-const CustomInput = ({ forwardRef, value, placeholder, onChangeText, line = 1, nextRef = null, blurOnSubmit = true }) => {
+const CustomInput = ({ forwardRef, value, placeholder, onChangeText, line = 1, nextRef = null }) => {
 
   return (
     <TextInput
