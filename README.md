@@ -2,6 +2,14 @@
 
 Para completar esse exercício você deve desenvolver um aplicativo social que contenha as seguintes páginas:
 
+<p float="left">
+<img src="https://github.com/diegosoriarios/react-native-test/blob/master/screenshots/Splashscreen.png?raw=true" width="150">
+<img src="https://github.com/diegosoriarios/react-native-test/blob/master/screenshots/Login.png?raw=true" width="150">
+<img src="https://github.com/diegosoriarios/react-native-test/blob/master/screenshots/Home.png?raw=true" width="150">
+<img src="https://github.com/diegosoriarios/react-native-test/blob/master/screenshots/Profile.png?raw=true" width="150">
+</p>
+
+
 ---
 
 ## Bibliotecas
