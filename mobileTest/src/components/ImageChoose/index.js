@@ -18,15 +18,11 @@ const ImageChoose = ({ image, onChangeImage }) => {
     };
     
     ImagePicker.launchImageLibrary(options, (response) => {
-      console.log('Response = ', response);
 
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-      } else {
+      if (response.didCancel) {} 
+      else if (response.error) {} 
+      else if (response.customButton) {} 
+      else {
         const responseUri = Platform.OS === "android" ? response.uri : response.uri.replace('file://', '')
         const source = { uri: responseUri };
 

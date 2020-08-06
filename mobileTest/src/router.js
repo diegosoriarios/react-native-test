@@ -2,8 +2,7 @@ import * as React from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen, ProfileScreen, Login, Settings, Splashscreen } from './screens'
-import IconLink from './components/IconLink/index';
-import Loading from './components/Loading/index';
+import { IconLink, Loading } from './components'
 import { navigationOptions } from './utils/navigationOptions';
 
 const Stack = createStackNavigator();

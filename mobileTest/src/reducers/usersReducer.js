@@ -1,4 +1,4 @@
-import { USERS_FETCH_DATA_SUCCESS, USERS_IS_LOADING, USER_HAS_ERRORED, FETCH_IMAGES } from '../actions/usersTypes';
+import { USERS_FETCH_DATA_SUCCESS, USERS_IS_LOADING, USER_HAS_ERRORED, FETCH_IMAGES, MY_USER } from '../actions/usersTypes';
 
 const INITIAL_STATE = {
   users: [],
@@ -35,7 +35,7 @@ export function usersReducer(state = INITIAL_STATE, action) {
         ...state,
         imageIsLoading: action.imageIsLoading
       }
-    case 'MY_USER':
+    case MY_USER:
       return {
         ...state,
         myUser: action.myUser

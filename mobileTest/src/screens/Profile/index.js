@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { FlatList, ActivityIndicator, View, Text, Image } from 'react-native';
 import { SocialIcon } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native';
-import { getUserImages } from '../../actions/usersActions';
+import { getUserImages } from '../../actions/usersFunctions';
 import styles from './styles'
-import GridItem from '../../components/GridItem';
+import { GridItem } from '../../components';
 import Icon from 'react-native-vector-icons/FontAwesome'
 Icon.loadFont();
 

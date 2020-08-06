@@ -3,8 +3,8 @@ import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux'
 
 // import { Container } from './styles';
-import { userFetchData } from '../../actions/usersActions';
-import ListItem from '../../components/ListItem';
+import { userFetchData } from '../../actions/usersFunctions';
+import { ListItem } from '../../components';
 
 const Home = ({ users, isLoading, hasErrored, fetchData }) => {
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { connect } from 'react-redux';
-import Form from '../../components/Form'
+import { Form } from '../../components'
 import { myUserUpdate } from '../../actions/usersActions';
 
 function Settings({ myUser, updateCurrentUser }) {
